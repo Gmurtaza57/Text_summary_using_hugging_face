@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcribe and Summarize</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<h2>Enter a YouTube Video URL for Transcription and Summarization</h2>
+<p>Please ensure videos are less than 1 hour for optimal processing.</p>
+<br>
+<p><strong>Sometimes the YouTube summarizer processes words that haven't been accurately transcribed from the original audio content. Please use ChatGPT to make <br> corrections after copying the summary content.</strong></p>
+<br>
+<form action="/" method="post" id="uploadForm">
+    <label for="video_url">YouTube Video URL:</label>
+    <input type="url" id="video_url" name="video_url" required>
+    <br><br>
+    <button type="submit" id="submitButton">Submit</button>
+</form>
+<div id="loading" style="display:none;">Processing... Please wait.</div>
+{% if original_text %}
+<h3>Original Transcription</h3>
+<div id="original_content" style="display:none;">{{ original_text }}</div>
+<a class="read-more-toggle" onclick="toggleContent('original_content', this)">Read More</a>
+
+<h3>Summary</h3>
+<div id="summary_content">{{ summary }}</div>
+<a class="read-more-toggle" onclick="toggleContent('summary_content', this)">Read Less</a>
+{% endif %}
+
+
+
+
+
+<script>
+    function toggleContent(id, linkElement) {
+    const content = document.getElementById(id);
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        linkElement.textContent = 'Read Less'; 
+    } else {
+        content.style.display = 'none';
+        linkElement.textContent = 'Read More'; 
+    }
+}
+
+    document.getElementById("uploadForm").addEventListener("submit", function(){
+    document.getElementById("submitButton").style.display = "none";
+    document.getElementById("loading").style.display = "block";
+})
+
+</script>
+
+</body>
+</html>
