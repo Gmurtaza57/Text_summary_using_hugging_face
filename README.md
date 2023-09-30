@@ -51,10 +51,3 @@ Feel free to customize the application further based on your needs.
 ## Disclaimer
 
 This application is provided for educational purposes and may require additional fine-tuning and error handling for production use. Be mindful of API usage limits and ensure compliance with API terms and conditions.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-```
-
-Replace `"your-username/your-repo-name"` with your actual GitHub repository details. This content can be used as the `readme.md` file in your GitHub repository.
